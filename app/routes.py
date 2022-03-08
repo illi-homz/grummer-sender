@@ -1,11 +1,9 @@
 from cmath import log
-from json import decoder
 from app import app
-from datetime import datetime
 from flask import  make_response, request
 from flask.json import  jsonify
 
-from .services import massegeSender, photoSender
+from .services import massegeSender, photoSender, mediaGroupSender
 
 
 @app.route('/')
@@ -21,3 +19,9 @@ def send_message():
 def send_photo():
     data = request.get_data()
     return make_response(jsonify(result=photoSender(data)), 200)
+
+@app.route('/sendPhotos', methods=['POST'])
+def send_photos():
+    print()
+    files = request.files.getlist('files')
+    return make_response(jsonify(result=mediaGroupSender(files)), 200)
