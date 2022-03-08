@@ -21,4 +21,5 @@ def massegeSender(msg):
 
 def photoSender(photo):
     r = requests.post(url_photo, photoData(photo))
+    print(r.json())
     return r.ok
