@@ -25,6 +25,7 @@ def photoSender(photo):
     params = {'chat_id': chat_id}
     files = {'photo': photo}
     r = requests.post(url_photo, params, files=files)
+    print('photoSender', r.json())
     return r.ok
 
 
@@ -41,4 +42,5 @@ def mediaGroupSender(files):
         current_files[file.filename] = file
 
     r = requests.post(url_media_group, params, files=current_files)
+    print('mediaGroupSender', r.json())
     return r.ok
