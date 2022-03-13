@@ -17,8 +17,8 @@ def send_message():
 
 @app.route('/sendPhoto', methods=['POST'])
 def send_photo():
-    data = request.get_data()
-    return make_response(jsonify(result=photoSender(data)), 200)
+    file = request.files.getlist('file')[0]
+    return make_response(jsonify(result=photoSender(file)), 200)
 
 @app.route('/sendPhotos', methods=['POST'])
 def send_photos():
